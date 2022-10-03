@@ -5,9 +5,6 @@ const GameboardController = () => {
     updateBoard = function (position) {
         if (board[position] === " ") {
             board[position] = getCurrentPlayerSymbol()
-            if (checkGameOver()) {
-                return true;
-            }
             nextPlayerTurn()
             return true
         }
@@ -62,21 +59,30 @@ const GameboardController = () => {
         return board[position]
     }
 
-    return { updateBoard, getSymbolInCell }
+    return { updateBoard, getSymbolInCell, checkGameOver }
 
 }
 
 const Gameboard = () => {
-    document.querySelectorAll(".section").forEach(el => el.addEventListener('click', () => {
-        let position = parseInt(el.id)
 
-        if (gameboardController.updateBoard(position)) {
-            el.innerHTML = gameboardController.getSymbolInCell(position)
+    placeSymbol = (e) => {
+        let cell = e.target
+        if (gameboardController.updateBoard(cell.id)) {
+            cell.innerHTML = gameboardController.getSymbolInCell(cell.id)
+            if (gameboardController.checkGameOver()) {
+                lockBoard()
+            }
         }
         else {
             console.log("Select another square")
         }
-    }));
+    }
+
+    lockBoard = () => {
+        document.querySelectorAll(".section").forEach(el => el.removeEventListener('click', placeSymbol))
+    }
+
+    document.querySelectorAll(".section").forEach(el => el.addEventListener('click', placeSymbol));
 
     return null
 }
