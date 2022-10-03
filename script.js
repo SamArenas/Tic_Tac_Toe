@@ -3,7 +3,7 @@ const GameboardController = () => {
     let board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     let currentPlayerSymbol = "X"
 
-    updateBoard = function (position) {
+    updateBoard = (position) => {
         if (board[position] === " ") {
             board[position] = getCurrentPlayerSymbol()
             nextPlayerTurn()
@@ -12,7 +12,7 @@ const GameboardController = () => {
         return false
     }
 
-    nextPlayerTurn = function () {
+    nextPlayerTurn = () => {
         if (getCurrentPlayerSymbol() === "X") {
             setCurrentPlayerSymbol("O");
         }
@@ -21,7 +21,7 @@ const GameboardController = () => {
         }
     }
 
-    checkGameOver = function () {
+    checkGameOver = () => {
         const winningCombinations = [
             [0, 1, 2],
             [3, 4, 5],
@@ -32,11 +32,13 @@ const GameboardController = () => {
             [0, 4, 8],
             [2, 4, 6]
         ]
+        let message = document.querySelector(".win-message")
         for (let i = 0; i < winningCombinations.length; i++) {
             combo = winningCombinations[i];
             if (board[combo[0]] !== " ") {
                 if (board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) {
-                    console.log(board[combo[0]], "is the winner!")
+                    message.innerHTML = (board[combo[0]] + " IS THE WINNER!")
+                    message.classList.add("visible")
                     return true
                 }
             }
@@ -44,7 +46,8 @@ const GameboardController = () => {
         if (board.includes(" ")) {
             return false
         }
-        console.log("DRAW")
+        message.innerHTML = "DRAW"
+        message.classList.add("visible")
         return true
     }
 
@@ -81,9 +84,6 @@ const Gameboard = () => {
                 lockBoard()
             }
         }
-        else {
-            console.log("Select another square")
-        }
     }
 
     lockBoard = () => {
@@ -92,6 +92,8 @@ const Gameboard = () => {
 
 
     document.querySelector("button").addEventListener('click', () => {
+        let message = document.querySelector(".win-message")
+        message.classList.remove("visible")
         gameboardController.reset()
         cells.forEach((el) => el.innerHTML = " ")
         cells.forEach((el) => el.addEventListener('click', placeSymbol));
@@ -99,8 +101,6 @@ const Gameboard = () => {
 
     cells.forEach((el) => el.addEventListener('click', placeSymbol));
 }
-
-
 
 gameboardController = GameboardController()
 gameboard = Gameboard()

@@ -13,10 +13,18 @@ html,body{
     align-items: center;
     gap: 20px;
 }
+.win-message{
+    visibility: hidden;
+    display: none;
+}
+.visible{
+    visibility: visible;
+    display: block;
+}
 
 .gameboard{
-    height: 600px;
-    width: 600px;
+    height: 550px;
+    width: 550px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,1fr);
@@ -28,6 +36,11 @@ html,body{
 
 .section{
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
 }
 
 .section:hover{
