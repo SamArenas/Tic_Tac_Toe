@@ -2,6 +2,18 @@ html,body{
     margin: 0;
     padding: 0;
     border: 0;
+    background-color: #277BC0;
+}
+h1{
+    color: #FFCB42;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60px;
+}
+.gameboard p{
+    color:#277BC0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container{
@@ -16,6 +28,12 @@ html,body{
 .win-message{
     visibility: hidden;
     display: none;
+    color: #FFCB42;
+    padding: 0;
+    margin: 0;
+    font-weight: bolder;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .visible{
     visibility: visible;
@@ -29,18 +47,18 @@ html,body{
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3,1fr);
     grid-gap: 2px;
-    background-color: red;
-    border: 2px solid red;
+    background-color: #FFB200;
+    border: 2px solid #FFB200;
 
 }
 
 .section{
-    background-color: white;
+    background-color: #FFF4CF;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 70px;
+    font-size: 40px;
 }
 
 .section:hover{

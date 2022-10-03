@@ -37,7 +37,7 @@ const GameboardController = () => {
             combo = winningCombinations[i];
             if (board[combo[0]] !== " ") {
                 if (board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) {
-                    message.innerHTML = (board[combo[0]] + " IS THE WINNER!")
+                    message.innerHTML = ("<p>" + board[combo[0]] + " IS THE WINNER!</p>")
                     message.classList.add("visible")
                     return true
                 }
@@ -46,7 +46,7 @@ const GameboardController = () => {
         if (board.includes(" ")) {
             return false
         }
-        message.innerHTML = "DRAW"
+        message.innerHTML = "<p>DRAW</p>"
         message.classList.add("visible")
         return true
     }
@@ -79,7 +79,7 @@ const Gameboard = () => {
     placeSymbol = (e) => {
         let cell = e.target
         if (gameboardController.updateBoard(cell.id)) {
-            cell.innerHTML = gameboardController.getSymbolInCell(cell.id)
+            cell.innerHTML = "<p>" + gameboardController.getSymbolInCell(cell.id) + "</p>"
             if (gameboardController.checkGameOver()) {
                 lockBoard()
             }
