@@ -1,4 +1,5 @@
 const GameboardController = () => {
+
     let board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     let currentPlayerSymbol = "X"
 
@@ -47,6 +48,11 @@ const GameboardController = () => {
         return true
     }
 
+    reset = () => {
+        board.fill(" ")
+        setCurrentPlayerSymbol("X")
+    }
+
     getCurrentPlayerSymbol = () => {
         return currentPlayerSymbol
     }
@@ -59,11 +65,13 @@ const GameboardController = () => {
         return board[position]
     }
 
-    return { updateBoard, getSymbolInCell, checkGameOver }
+    return { updateBoard, getSymbolInCell, checkGameOver, reset }
 
 }
 
 const Gameboard = () => {
+
+    let cells = document.querySelectorAll(".section")
 
     placeSymbol = (e) => {
         let cell = e.target
@@ -79,13 +87,20 @@ const Gameboard = () => {
     }
 
     lockBoard = () => {
-        document.querySelectorAll(".section").forEach(el => el.removeEventListener('click', placeSymbol))
+        cells.forEach((el) => el.removeEventListener('click', placeSymbol))
     }
 
-    document.querySelectorAll(".section").forEach(el => el.addEventListener('click', placeSymbol));
 
-    return null
+    document.querySelector("button").addEventListener('click', () => {
+        gameboardController.reset()
+        cells.forEach((el) => el.innerHTML = " ")
+        cells.forEach((el) => el.addEventListener('click', placeSymbol));
+    })
+
+    cells.forEach((el) => el.addEventListener('click', placeSymbol));
 }
+
+
 
 gameboardController = GameboardController()
 gameboard = Gameboard()
