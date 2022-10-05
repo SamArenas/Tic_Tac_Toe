@@ -52,8 +52,8 @@ h1{
  }
 
 .current-turn{
-    font-size: 50px;
     color: white;
+    text-decoration: underline;
 }
 
 .win-message{

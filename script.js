@@ -2,6 +2,9 @@ const GameboardController = (() => {
 
     let board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     let currentPlayerSymbol = "X"
+    let player1NameDOM = document.querySelector("#player1-name")
+    let player2NameDOM = document.querySelector("#player2-name")
+    player1NameDOM.classList.add("current-turn")
 
     const updateBoard = (position) => {
         if (board[position] === " ") {
@@ -15,9 +18,13 @@ const GameboardController = (() => {
     const nextPlayerTurn = () => {
         if (getCurrentPlayerSymbol() === "X") {
             setCurrentPlayerSymbol("O");
+            player1NameDOM.classList.remove("current-turn")
+            player2NameDOM.classList.add("current-turn")
         }
         else {
             setCurrentPlayerSymbol("X");
+            player2NameDOM.classList.remove("current-turn")
+            player1NameDOM.classList.add("current-turn")
         }
     }
 
@@ -55,6 +62,8 @@ const GameboardController = (() => {
     const reset = () => {
         board.fill(" ")
         setCurrentPlayerSymbol("X")
+        player1NameDOM.classList.add("current-turn")
+        player2NameDOM.classList.remove("current-turn") 
     }
 
     const getCurrentPlayerSymbol = () => {
