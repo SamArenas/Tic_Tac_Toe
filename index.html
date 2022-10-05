@@ -7,25 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Tic Tac Toe</title>
+    <title>Tic-Tac-Toe</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Tic Tac Toe</h1>
-        <h3 class="win-message"></h3>
-        <div class="gameboard">
-            <div class="section" id="0"></div>
-            <div class="section" id="1"></div>
-            <div class="section" id="2"></div>
-            <div class="section" id="3"></div>
-            <div class="section" id="4"></div>
-            <div class="section" id="5"></div>
-            <div class="section" id="6"></div>
-            <div class="section" id="7"></div>
-            <div class="section" id="8"></div>
+        <div class="player" id="player1">
+            <h2 class="player" id="player1-name" contenteditable="true">PLAYER 1</h2>
+            <img src="./img/user.png" alt="image of player 1">
         </div>
-        <button type="button">CLEAR</button>
+        <div class="main-game">
+            <h1>Tic-Tac-Toe</h1>
+            <h3 class="win-message"></h3>
+            <div class="gameboard">
+                <div class="section" id="0"></div>
+                <div class="section" id="1"></div>
+                <div class="section" id="2"></div>
+                <div class="section" id="3"></div>
+                <div class="section" id="4"></div>
+                <div class="section" id="5"></div>
+                <div class="section" id="6"></div>
+                <div class="section" id="7"></div>
+                <div class="section" id="8"></div>
+            </div>
+            <button type="button">CLEAR</button>
+        </div>
+        <div class="player" id="player2">
+            <h2 class="player" id="player2-name" contenteditable="true">PLAYER 2</h2>
+            <img src="./img/user.png" alt="image of player 1">
+        </div>
+
     </div>
 
 </body>
